@@ -1,0 +1,33 @@
+<section>
+
+    <div class="d-flex justify-content-between">
+      <h4>Lista de vehiculos</h4>
+      <a routerLink="/vehiculo/create" class="btn btn-success">Crear un vehiculo</a>
+    </div>
+
+    <br>
+    
+    <table class="table table-bordered">
+      <tr>
+        <th>Placa</th>
+        <th>Color</th>
+        <th>Marca</th>
+        <th>Tipo de vehiculo</th>
+        <th>Conductor</th>
+        <th>Propietario</th>
+        <th width="220px">Action</th>
+      </tr>
+      <tr *ngFor="let vehiculo of vehiculos">
+        <td>{{ vehiculo.placa }}</td>
+        <td>{{ vehiculo.color }}</td>
+        <td>{{ vehiculo.marca }}</td>
+        <td>{{ vehiculo.tipo }}</td>
+        <td>{{ vehiculo.primer_nombre }} {{vehiculo.segundo_nombre}} {{vehiculo.apellidos}}</td>
+        <td>{{ vehiculo.primer_nombre_pro }} {{vehiculo.segundo_nombre_pro}} {{vehiculo.apellidos_pro}}</td>
+        <td>
+          <a href="#" [routerLink]="['/vehiculo/', 'edit', vehiculo.id ]" class="btn btn-primary">Editar</a>
+          <button type="button" (click)="deleteVehiculo(vehiculo.id)" class="btn btn-danger">Borrar</button>
+        </td>
+      </tr>
+    </table>
+ </section>

@@ -1,0 +1,26 @@
+<div class="container">
+  
+    <div class="d-flex justify-content-between">
+      <h4>Edit ciudad</h4>
+      <a href="#" routerLink="/ciudad/index" class="btn btn-primary">Atras</a>
+    </div>
+
+    <hr>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-group row">
+            <div class="col-md-6 ">
+              <label for="title">Nombre:</label>
+              <input
+                formControlName="nombre"
+                [(ngModel)]="ciudad.nombre"
+                id="nombre"
+                type="text"
+                class="form-control">
+              <div *ngIf="f.nombre.touched && f.nombre.invalid" class="alert alert-danger">
+                  <div *ngIf="f.nombre.errors.required">*Nombre es obligatorio.</div>
+              </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Actualizar</button>
+    </form>
+</div>

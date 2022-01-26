@@ -1,0 +1,67 @@
+<div class="container">
+  
+    <div class="d-flex justify-content-between">
+      <h4>Editar conductor</h4>
+      <a href="#" routerLink="/conductor/index" class="btn btn-primary">Atras</a>
+    </div>
+
+    <hr>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="form-group row">
+              <div class="col-md-6 ">
+                <label for="">identificación:</label>
+                <input formControlName="id" id="id" [(ngModel)]="conductor.id" type="text" class="form-control">
+                <div *ngIf="f.id.touched && f.id.invalid" class="alert alert-danger">
+                    <div *ngIf="f.id.errors.required">*identificación es obligatorio.</div>
+                </div>
+              </div>
+              <div class="col-md-6 ">
+                <label for="">Primer nombre:</label>
+                <input formControlName="primer_nombre" [(ngModel)]="conductor.primer_nombre" id="primer_nombre" type="text" class="form-control">
+                <div *ngIf="f.primer_nombre.touched && f.primer_nombre.invalid" class="alert alert-danger">
+                    <div *ngIf="f.primer_nombre.errors.required">*primer nombre es obligatorio.</div>
+                </div>
+              </div>
+              <div class="col-md-6 ">
+                <label for="">Segundo nombre:</label>
+                <input formControlName="segundo_nombre" [(ngModel)]="conductor.segundo_nombre" id="segundo_nombre" type="text" class="form-control">
+              </div>
+              <div class="col-md-6 ">
+                <label for="">Apellidos:</label>
+                <input formControlName="apellidos"  [(ngModel)]="conductor.apellidos" id="apellidos" type="text" class="form-control">
+                <div *ngIf="f.apellidos.touched && f.apellidos.invalid" class="alert alert-danger">
+                    <div *ngIf="f.apellidos.errors.required">*apellidos es obligatorio.</div>
+                </div>
+              </div>
+              <div class="col-md-6 ">
+                <label for="">Dirección:</label>
+                <input formControlName="direccion" [(ngModel)]="conductor.direccion" id="direccion" type="text" class="form-control">
+                <div *ngIf="f.direccion.touched && f.direccion.invalid" class="alert alert-danger">
+                    <div *ngIf="f.direccion.errors.required">*dirección es obligatorio.</div>
+                </div>
+              </div>
+              <div class="col-md-6 ">
+                <label for="">Telefono:</label>
+                <input formControlName="telefono" [(ngModel)]="conductor.telefono" id="telefono" type="text" class="form-control">
+                <div *ngIf="f.telefono.touched && f.telefono.invalid" class="alert alert-danger">
+                    <div *ngIf="f.telefono.errors.required">*telefono es obligatorio.</div>
+                </div>
+              </div>
+              <div class="col-md-6 ">
+                <label for="">Ciudad:</label>
+                  <select formControlName="id_ciudad"  id="id_ciudad" [(ngModel)]="conductor.id_ciudad" class="form-control">
+                      <option value="">-- seleccione una opción --</option>
+                      <option *ngFor="let country of ciudadlist" [ngValue]="country.id">{{country.nombre}}</option>
+                  </select>
+                  <div *ngIf="f.id_ciudad.touched && f.id_ciudad.invalid" class="alert alert-danger">
+                      <div *ngIf="f.id_ciudad.errors.required">*Tipo es obligatorio.</div>
+                  </div>
+              </div>
+         </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Actualizar</button>
+    </form>
+</div>
+
+

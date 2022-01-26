@@ -1,0 +1,68 @@
+<div>
+
+    <div class="d-flex justify-content-between">
+      <h4>Creación de vehiculos</h4>
+      <a href="#" routerLink="/vehiculo/index" class="btn btn-primary">Atras</a>
+    </div>
+  
+    <hr/>
+  
+      <form [formGroup]="form" (ngSubmit)="submit()">
+  
+          <div class="form-group row">
+              <div class="col-md-6 ">
+                <label for="title">Placa:</label>
+                <input formControlName="placa" id="placa" type="text" class="form-control">
+                <div *ngIf="f.placa.touched && f.placa.invalid" class="alert alert-danger">
+                    <div *ngIf="f.placa.errors.required">*Placa es obligatorio.</div>
+                </div>
+              </div>
+              <div class="col-md-6 ">
+                <label for="color">Color:</label>
+                <input formControlName="color" id="color" type="text" class="form-control">
+                <div *ngIf="f.color.touched && f.color.invalid" class="alert alert-danger">
+                    <div *ngIf="f.color.errors.required">*Color es obligatorio.</div>
+                </div>
+              </div>
+              <div class="col-md-6 ">
+                <label for="marca">Marca:</label>
+                <input formControlName="marca" id="marca" type="text" class="form-control">
+                <div *ngIf="f.marca.touched && f.marca.invalid" class="alert alert-danger">
+                    <div *ngIf="f.marca.errors.required">*Marca es obligatorio.</div>
+                </div>
+              </div>
+              <div class="col-md-6 ">
+                <label for="marca">Tipo:</label>
+                  <select formControlName="id_tipo_vehiculo" id="id_tipo_vehiculo" class="form-control">
+                      <option value="">-- seleccione una opción --</option>
+                      <option value="1">Particular</option>
+                      <option value="2">Publico</option>
+                  </select>
+                  <div *ngIf="f.id_tipo_vehiculo.touched && f.id_tipo_vehiculo.invalid" class="alert alert-danger">
+                      <div *ngIf="f.id_tipo_vehiculo.errors.required">*Tipo es obligatorio.</div>
+                  </div>
+              </div>
+              <div class="col-md-6 ">
+                <label for="marca">Conductor:</label>
+                  <select formControlName="id_conductor" id="id_conductor" class="form-control">
+                      <option value="">-- seleccione una opción --</option>
+                      <option *ngFor="let conductor of conductorlist" [ngValue]="conductor.id">{{conductor.primer_nombre}} {{conductor.apellidos}}</option>
+                  </select>
+                  <div *ngIf="f.id_conductor.touched && f.id_conductor.invalid" class="alert alert-danger">
+                      <div *ngIf="f.id_conductor.errors.required">*Tipo es obligatorio.</div>
+                  </div>
+              </div>
+              <div class="col-md-6 ">
+                <label for="marca">Propietario:</label>
+                  <select formControlName="id_propietario" id="id_propietario" class="form-control">
+                      <option value="">-- seleccione una opción --</option>
+                      <option *ngFor="let propietario of propietariolist" [ngValue]="propietario.id">{{propietario.primer_nombre}} {{propietario.apellidos}}</option>
+                  </select>
+                  <div *ngIf="f.id_propietario.touched && f.id_propietario.invalid" class="alert alert-danger">
+                      <div *ngIf="f.id_propietario.errors.required">*Propietario es obligatorio.</div>
+                  </div>
+              </div>
+          </div>
+          <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Guardar</button>
+      </form>
+  </div>
